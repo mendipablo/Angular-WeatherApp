@@ -1,0 +1,23 @@
+.container {
+
+  margin-top: 60px;
+  padding: 50px 0;
+  margin-bottom: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content b {
+  font-size: 30px;
+}
+
+.content p {
+  font-size: 18px;
+}
+
+.content span {
+  font-size: 16px;
+  color: #777;
+  text-decoration: none;
+}

@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --nav-color: darkorange;
+  --map-background-color: rgb(194, 186, 186);
+  --card-background-color:#eae1e7;
+  --hover-color: #b69062;
+}
+
+html, body { 
+  height: 100%; 
+  font-family: 'Roboto', "Helvetica Neue", sans-serif; 
+  color: #444444;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+
+

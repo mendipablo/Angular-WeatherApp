@@ -1,0 +1,125 @@
+<nav class="navbar navbar-expand-lg navbar-dark  ">
+
+  <div id="header" class="container-fluid my-container">
+    <h1 class="navbar-brand bi-cloud-download" id="navbarTitle">Weather App</h1>
+
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+      aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link scrollto"  (click)="cleanGeo()" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" routerLink="">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scrollto" (click)="cleanGeo()" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"  routerLink="/map">Mapa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scrollto" (click)="cleanGeo()" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" routerLink="/alert" >Alertas
+            <i *ngIf='response ' class="bi-bell-fill"></i>
+            <i *ngIf='!response ' class=""></i>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="pointer-link" data-bs-toggle="dropdown" id="collapsibleNavbar"><span>Reportes</span> <i
+              class="bi bi-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+
+            <li><span><b>Buenos Aires</b></span>
+              <ul>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/bsas/Bahía Blanca">Bahía Blanca</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/bsas/Baradero">Baradero</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/bsas/Carmen de Areco">Carmen de Areco</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/bsas/Tres Arroyos">Tres Arroyos</a></li>
+
+              </ul>
+            </li>
+            <li><span><b>Córdoba</b></span>
+              <ul>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/cba/Córdoba">Córdoba</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/cba/Río Cuarto">Río Cuarto</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/cba/Río Tercero">Río Tercero</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/cba/Marco Juarez">Marco Juarez</a></li>
+
+              </ul>
+            </li>
+            <li><span><b>Entre Ríos</b></span>
+              <ul>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/er/Concepción del Uruguay">Concepción del Uruguay</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/er/Gualeguaychu">Gualeguaychu</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/er/Paraná">Paraná</a></li>
+                <li (click)="refresh()"><a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
+                  routerLink="/record/er/Villaguay">Villaguay</a></li>
+
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+      <div class="search-block">
+        <div class="search-bar">
+          <div class="search-container">
+            <form class="search-form " (submit)="submitLocation(cityName)">
+              <input size="30" type="text" placeholder="Buscar" #cityName>
+              <button type="submit" title="Search" ><i class="bi bi-search"></i></button>
+              <ul class="search-dropdown-container">
+
+
+                <li *ngFor="let item of geo" (click)="getCoord(item.lat, item.lon)" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+
+                  <img src="https://countryflagsapi.com/png/{{item.country}}" class="flag">
+                  <span id="countryform">{{item.name}}, {{item.country}} <p style="font-size:10px; padding-top: 3pt;">
+                      {{item.state}} </p>
+                  </span>
+                  <span id="coordinates"> {{item.lat}}, <p>{{item.lon}}</p> </span>
+
+                </li>
+              </ul>
+            </form>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

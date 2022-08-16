@@ -1,0 +1,547 @@
+#cardtitle {
+  font-size: 2.125em;
+  text-align: center;
+  color: white;
+}
+
+
+
+.timeline-height {
+  box-sizing: border-box;
+}
+
+
+.icon-wind-direction {
+  height: 1.17em;
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+# First Card Current Weather
+--------------------------------------------------------------*/
+
+
+/* Cards */
+.postcard {
+  flex-wrap: wrap;
+  display: flex;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  margin: 0 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+}
+
+.postcard.dark {
+  background-color: #18151f;
+}
+
+.postcard.light {
+  background-color: var(--card-background-color);
+}
+
+.postcard .t-dark {
+  color: #18151f;
+}
+
+
+.postcard .postcard-img {
+  max-height: 180px;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.postcard .postcard-img-link {
+  display: contents;
+}
+
+.postcard .postcard-bar {
+  width: 50px;
+  height: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #424242;
+  transition: width 0.2s ease;
+}
+
+.postcard .postcard-text {
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.postcard .postcard-text .postcard-description {
+  text-transform: uppercase;
+  color: var(--nav-color);
+  font-size: 1.4em;
+}
+
+.postcard .postcard-preview-txt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  height: 100%;
+}
+
+.postcard .postcard-tagbox {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 1em;
+  font-weight: 700;
+  margin: 1.2em 0 0 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.postcard .postcard-tagbox .tag-item {
+  display: inline-block;
+  background: rgba(83, 83, 83, 0.8);
+  border-radius: 3px;
+  margin: 0 .8em 0 0;
+  padding: 2.5px 10px;
+  cursor: default;
+  user-select: none;
+  color: var(--nav-color);
+
+}
+
+
+
+.postcard:hover .postcard-bar {
+  width: 100px;
+}
+
+@media screen and (min-width: 769px) {
+  .postcard {
+    flex-wrap: inherit;
+  }
+
+
+  .postcard .postcard-tagbox {
+    justify-content: start;
+  }
+
+  .postcard .postcard-img {
+    margin: 4em 0 0 1em;
+    width: 12em;
+    transition: transform 0.3s ease;
+  }
+
+  .postcard .postcard-text {
+    padding: 3rem;
+    width: 100%;
+  }
+
+
+
+  .postcard:hover .postcard-img {
+    transform: scale(1.1);
+  }
+
+  .postcard:hover .postcard-tagbox .tag-item {
+    transform: scale(1.1);
+    margin: 0 2em 0 0;
+  }
+
+  time i {
+    font-size: 1.5em;
+
+  }
+
+  .datenow {
+    font-size: 1.2em;
+    text-transform: capitalize;
+  }
+
+
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+  #cardtitle {
+    font-size: 1.25em;
+  }
+
+  .postcard .postcard-img {
+    width: 8em;
+
+  }
+
+  .postcard-text {
+    font-size: .8em;
+    padding: 1rem 2.5rem;
+  }
+
+
+
+}
+
+
+
+.orange .postcard-bar {
+  background-color: var(--nav-color);
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
+
+
+
+.row {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+}
+
+.card {
+
+  max-width: 100%;
+  padding: .75rem;
+  margin: 0 .5rem 2rem .5rem;
+  border: 0;
+  flex-basis: 32.333%;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+}
+
+
+.card-margin {
+
+  flex-wrap: wrap;
+  display: flex;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  background-color: var(--card-background-color);
+}
+
+.card .card-header {
+  background: none;
+  padding: 0 0.9375rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+
+}
+
+
+.card .card-header.no-border {
+  border: 0;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
+
+.widget .widget-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.widget .widget-title-wrapper .widget-date-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget .widget-title-wrapper .widget-date-primary .widget-date-day {
+  color: var(--nav-color);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget .widget-title-wrapper .widget-date-primary .widget-date-month {
+  color: var(--nav-color);
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+
+
+
+.widget .widget-title-wrapper .widget-meeting-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.img-link .widget-img {
+  height: 3em;
+  width: 3em;
+}
+
+
+
+.widget .widget-title-wrapper .widget-meeting-info .widget-meeting-time {
+  color: #4e515f;
+  font-size: .78em;
+  text-transform: uppercase;
+}
+
+.widget .widget-meeting-points {
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: .5rem;
+}
+
+.widget .widget-meeting-points .widget-meeting-item {
+  display: list-item;
+  color: #4e515f;
+}
+
+.widget .widget-meeting-points .widget-meeting-item span {
+  margin-left: .5rem;
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+
+
+  .card {
+
+    max-width: 100%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    flex-basis: 63.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+
+  .card-margin {
+    margin-bottom: 1.875rem;
+  }
+
+  .card .card-header {
+    background: none;
+    padding: 0 0.9375rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    min-height: 3em;
+  }
+
+
+
+
+
+  .widget .widget-title-wrapper .widget-date-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--card-background-color);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  .widget .widget-title-wrapper .widget-date-primary .widget-date-day {
+    color: var(--nav-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .widget .widget-title-wrapper .widget-date-primary .widget-date-month {
+    color: var(--nav-color);
+    line-height: 1;
+    font-size: .85rem;
+    text-transform: uppercase;
+  }
+
+
+
+
+  .widget .widget-title-wrapper .widget-meeting-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: .5rem;
+  }
+
+
+  .img-link .widget-img {
+    height: 2.2em;
+    width: 2.2em;
+  }
+
+  .widget .widget-title-wrapper .widget-meeting-info .widget-meeting-time {
+    color: #4e515f;
+    font-size: .7em;
+    text-transform: uppercase;
+  }
+
+  .widget .widget-meeting-points {
+    font-weight: 400;
+    font-size: .9em;
+    margin-top: .4rem;
+  }
+
+  .widget .widget-meeting-points .widget-meeting-item span {
+    margin-left: .1rem;
+  }
+
+}
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# No search
+--------------------------------------------------------------*/
+
+
+
+.nosearch {
+  animation: noSearch 2s;
+
+  animation-direction: alternate;
+  -webkit-animation: noSearch 2s;
+  -moz-animation: noSearch 2s;
+  -o-animation: noSearch 2s;
+  -ms-animation: noSearch 2s;
+
+
+}
+
+
+.container-nosearch {
+
+  margin-top: 3.75em;
+  padding: 3.125em 0;
+  margin-bottom: 31.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.content-nosearch b {
+  font-size: 1.875em;
+  color: var(--nav-color)
+}
+
+.content-nosearch span {
+  font-size: 1.125em;
+}
+
+.content-nosearch p {
+  font-size: 1em;
+  color: #777;
+  text-decoration: none;
+}
+
+#remember {
+  font-size: 1.25em;
+
+}
+
+
+
+
+@keyframes noSearch {
+  0% {
+    opacity: 0;
+    transform: translateY(-4.375em);
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+    transform: translateY(-3.125em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-moz-keyframes noSearch {
+  0% {
+    opacity: 0;
+    transform: translateY(-4.375em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes noSearch {
+  0% {
+    opacity: 0;
+    transform: translateY(-4.375em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-o-keyframes noSearch {
+  0% {
+    opacity: 0;
+    transform: translateY(-4.375em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-ms-keyframes noSearch {
+  0% {
+    opacity: 0;
+    transform: translateY(-4.375em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

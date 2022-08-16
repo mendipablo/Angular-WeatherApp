@@ -1,0 +1,301 @@
+<section class="fade-left" id="main">
+
+
+  <ng-container *ngIf="modelCity.length else error">
+    <h2 class="top-section"> {{modelCity[0].city}}</h2>
+   
+    <div *ngFor='let city of modelCity | paginate : {itemsPerPage: 5, currentPage:page}; let i = index' class="d-flex justify-content-center" >  
+      <div class="wrap"  >
+    
+          <div type="button" (click)="toggle(ver,i)" class="card-header" >
+
+            <div class="d-flex justify-content-between">
+              <div class="day-list-container"> 
+                <span class="date"> {{city.date}}</span>
+
+                   
+                <span class="temperature"> {{city.weather[0].temp.min}} °C /
+                 {{city.weather[0].temp.max}} °C</span>
+              
+   
+              <span>
+              <figure class="img-link">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('50d')" src="./assets/icon/Mist.png" alt="ICONO"
+                  class="postcard-img">
+    
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('01d')" src="./assets/icon/Sun.png" alt="ICONO"
+                  class="postcard-img">
+    
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('01n')" src="./assets/icon/Night.png" alt="ICONO"
+                  class="postcard-img">
+    
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('02d')" src="./assets/icon/SunCloudy.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('02n')" src="./assets/icon/NightCloudy.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('03d')" src="./assets/icon/CloudyBroken.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('03n')" src="./assets/icon/CloudyBroken.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('04d')" src="./assets/icon/Cloudy.png" alt="ICONO"
+                  class="postcard-img">
+    
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('04n')" src="./assets/icon/Cloudy.png" alt="ICONO"
+                  class="postcard-img">
+    
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('09d')" src="./assets/icon/CloudyRain.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('10d')" src="./assets/icon/SunRain.png" alt="ICONO"
+                  class="postcard-img">
+    
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('10n')" src="./assets/icon/CloudyRain.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('11d')" src="./assets/icon/CloudyStorm.png" alt="ICONO"
+                  class="postcard-img">
+                <img *ngIf="(city.weather[0].weather[0].icon) == ('013d')" src="./assets/icon/Temperature2.png" alt="ICONO"
+                  class="postcard-img">
+              </figure>
+              <small class="opacity-50 text-nowrap">{{city.weather[0].weather[0].description}}</small>
+            </span>
+          
+           
+            <i class="bi bi-chevron-down"></i>
+            </div>
+            </div>
+      
+        </div>
+        <div class="d-none" #ver >
+        <div class="detail-container" >
+        
+       
+         
+
+            <div class="top-section">
+              <div >
+                <p>{{city.weather[0].weather[0].description}}</p>
+                <span>La mínima fue de {{city.weather[0].temp.min}} °C
+                y la máxima {{city.weather[0].temp.max}} °C.</span>           
+              </div>
+
+             
+            </div>
+            <div class="weather-container" >
+            <ul class="weather-items">
+              <li>Humedad: {{city.weather[0].humidity}}%</li>
+              <li>Presión: {{city.weather[0].pressure}} hpa&nbsp;&#126;&nbsp;</li>
+              <li>Nubosidad: {{city.weather[0].clouds}}%</li>
+              <ng-container *ngIf="city.weather[0].pop">
+                <li>Precipitación: {{city.weather[0].pop * 100 | number}} %</li>
+              </ng-container>            
+              <ng-container *ngIf="city.weather[0].rain">
+              <li>Volumen: {{city.weather[0].rain}} mm</li>
+              <li>Pto. Rocío: {{city.weather[0].dew_point}} °C </li>
+            </ng-container>
+             
+            </ul>
+          
+            <table>
+              <tr>
+                <th></th>
+                <th>Mañana</th>
+                <th>Tarde</th>       
+                <th>Noche</th>
+                <th>Promedio</th>
+              </tr>
+              <tr>
+                <td>TEMPERATURA</td>
+                <td>{{city.weather[0].temp.morn}} °C</td>
+                <td>{{city.weather[0].temp.eve}} °C</td>
+                <td>{{city.weather[0].temp.night}} °C </td>
+                <td>{{(city.weather[0].temp.morn + city.weather[0].temp.eve  + 
+                  city.weather[0].temp.night) / 3 | number: '1.2-2':'en'}} °C
+                  </td> 
+              </tr>
+              <tr>
+                <td>SENSACIÓN TÉRMICA</td>
+                <td>{{city.weather[0].feels_like.morn}} °C</td>
+                <td>{{city.weather[0].feels_like.eve}} °C</td>
+                <td>{{city.weather[0].feels_like.night}} °C </td>
+                <td>{{(city.weather[0].feels_like.morn + city.weather[0].feels_like.eve + 
+                  city.weather[0].feels_like.night) / 3 | number: '1.2-2':'en'}} °C</td>
+              </tr>
+            </table>
+          </div>
+        <div class="weather-container">
+            <div class="figure-item">
+            <figure>
+              <img  src="./assets/icon/Sunn/y.png" alt="ICONO"
+                  class="sun-img">
+            </figure>
+              <ul class="weather-items">
+                <li>Salida: {{city.weather[0].sunrise * 1000 | date:'h:mm'}} AM </li>
+                <li>Puesta: {{city.weather[0].sunset * 1000 | date:'h:mm'}} PM</li>
+                <li>Indice UV: {{city.weather[0].uvi}} </li>
+              </ul>
+  </div>
+
+        <table >
+          <tr>
+            <th></th>
+            <th>Vel. Media</th>
+            <th>Ráfaga</th>
+            <th>Grado</th>
+            <th>Dirección</th>
+          </tr>
+          <tr>
+            <td> VIENTO</td>
+            <td>{{city.weather[0].wind_speed *3.6 | number: '1.2-2':'en'}} Km/H</td>
+            <td>{{city.weather[0].wind_gust *3.6 | number: '1.2-2':'en'}} Km/H</td>
+            <td>{{city.weather[0].wind_deg}}°</td>
+            <td> {{city.weather[0].wind_cardinal}}</td>
+          </tr>
+        </table>
+    </div>   
+ 
+    <div class="chart" id="{{'chartContainer'+i}}" >
+      <canvasjs-chart  [options]="chartOptions" ></canvasjs-chart>    
+   
+  </div>
+  <div class="buttons">
+    <button id="temp"  type="button" (click)="temperatureChart(i)"> Temperatura</button>
+    <button id="wind"  type="button" (click)="windChart(i)"> Viento</button>
+    <button id="humidity"  type="button" (click)="humidityChart(i)"> Humedad</button>
+  </div>
+  <!--  <div class="extra-items" >
+  <ng-container *ngFor="let hourly of city.weather[1]">
+ 
+      <span > {{hourly.wind_speed *3.6 | number: '1.2-2':'en'}}Km/H </span>
+    </ng-container>
+    </div>
+-->
+
+          </div>
+      </div>
+    </div>
+  </div>
+
+<pagination-controls  class="d-flex justify-content-center" previousLabel="Anterior"
+nextLabel="Siguiente" (pageChange)='page = $event'> </pagination-controls>
+    
+
+
+      <div class="container text-center mt-3 mb-3">
+        PROXIMOS DIAS
+      </div>
+      <section *ngIf="timeline">
+
+        <div class="container">
+          <div class="row">
+            <div class="card" *ngFor="let day of timeline">
+  
+              <div class="card card-margin">
+                <div class="card-header no-border">
+                  <h5 class="card-title">{{day.dt * 1000| date: 'EEEE '}}</h5>
+                </div>
+                <div class="card-body pt-0">
+                  <div class="widget">
+                    <div class="widget-title-wrapper">
+                      <div class="widget-date-primary">
+                        <span class="widget-date-day">{{day.dt *1000 |date: 'd '}}</span>
+                        <span class="widget-date-month">{{day.dt *1000 |date: 'MMM'}}</span>
+                      </div>
+                      <div class="widget-meeting-info">
+                        <div class="widget-pro-title">
+                          <figure class="img-link">
+                            <img *ngIf="(day.weather[0].icon) == ('50d')" src="./assets/icon/Mist.png" alt="ICONO"
+                              class="widget-img">
+  
+                            <img *ngIf="(day.weather[0].icon) == ('01d')" src="./assets/icon/Sun.png" alt="ICONO"
+                              class="widget-img">
+  
+                            <img *ngIf="(day.weather[0].icon) == ('01n')" src="./assets/icon/Night.png" alt="ICONO"
+                              class="widget-img">
+  
+                            <img *ngIf="(day.weather[0].icon) == ('02d')" src="./assets/icon/SunCloudy.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('02n')" src="./assets/icon/NightCloudy.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('03d')" src="./assets/icon/CloudyBroken.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('03n')" src="./assets/icon/CloudyBroken.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('04d')" src="./assets/icon/Cloudy.png"
+                              alt="ICONO" class="widget-img">
+  
+                            <img *ngIf="(day.weather[0].icon) == ('04n')" src="./assets/icon/Cloudy.png"
+                              alt="ICONO" class="widget-img">
+  
+                            <img *ngIf="(day.weather[0].icon) == ('09d')" src="./assets/icon/CloudyRain.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('10d')" src="./assets/icon/SunRain.png"
+                              alt="ICONO" class="widget-img">
+  
+                            <img *ngIf="(day.weather[0].icon) == ('10n')" src="./assets/icon/CloudyRain.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('11d')" src="./assets/icon/CloudyStorm.png"
+                              alt="ICONO" class="widget-img">
+                            <img *ngIf="(day.weather[0].icon) == ('013d')" src="./assets/icon/Temperature2.png"
+                              alt="ICONO" class="widget-img">
+                          </figure>
+  
+  
+                        </div>
+                        <span class="widget-meeting-time"> {{day.weather[0].description}}</span>
+                      </div>
+                    </div>
+                    <ul class="widget-meeting-points">
+                      <li class="widget-meeting-item"><span>{{day.temp.min | number:'1.0-0' }}°C /
+                          {{day.temp.max | number: '1.0-0'}}°C</span>
+                      </li>
+                      <li class="widget-meeting-item"><span>Humedad: {{day.humidity}} %</span></li>
+                      <li class="widget-meeting-item"><span>Presion: {{day.pressure}} hpa&nbsp;&#126;&nbsp;</span>
+                      </li>
+                      <li class="widget-meeting-item"><span>
+                          {{day.wind_speed}} m/s {{day.wind_cardinal}}
+                          <svg class="icon-wind-direction" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
+                            xml:space="preserve" style="transform:rotate({{day.wind_deg}}deg);">
+                            <g fill="#4848a">
+                              <path
+                                d="M510.5,749.6c-14.9-9.9-38.1-9.9-53.1,1.7l-262,207.3c-14.9,11.6-21.6,6.6-14.9-11.6L474,48.1c5-16.6,14.9-18.2,21.6,0l325,898.7c6.6,16.6-1.7,23.2-14.9,11.6L510.5,749.6z">
+                              </path>
+  
+                              <path
+                                d="M817.2,990c-8.3,0-16.6-3.3-26.5-9.9L497.2,769.5c-5-3.3-18.2-3.3-23.2,0L210.3,976.7c-19.9,16.6-41.5,14.9-51.4,0c-6.6-9.9-8.3-21.6-3.3-38.1L449.1,39.8C459,13.3,477.3,10,483.9,10c6.6,0,24.9,3.3,34.8,29.8l325,898.7c5,14.9,5,28.2-1.7,38.1C837.1,985,827.2,990,817.2,990z M485.6,716.4c14.9,0,28.2,5,39.8,11.6l255.4,182.4L485.6,92.9l-267,814.2l223.9-177.4C454.1,721.4,469,716.4,485.6,716.4z">
+                              </path>
+                            </g>
+                          </svg>
+                        </span></li>
+                      <li> Sol:
+                        <ul>
+  
+                          <li class="widget-meeting-item"><span>Salida: {{day.sunrise * 1000 | date:'h:mm'}} AM
+                            </span></li>
+                          <li class="widget-meeting-item"><span>Puesta: {{day.sunset * 1000 | date:'h:mm'}} PM
+                            </span></li>
+                        </ul>
+                      </li>
+                    </ul>
+  
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+      </section>
+
+  </ng-container>
+  <ng-template #error>
+
+    Error
+  </ng-template>
+
+
+</section>
+
+
+
+<app-footer></app-footer>

@@ -1,0 +1,492 @@
+#main {
+
+  margin-top: 40px;
+
+}
+
+.wrap{
+  width: 90%;
+}
+
+.card-header{
+margin: 0 0 1em 0;
+background-color: var(--card-background-color);
+}
+
+.day-list-container{
+  margin: .5em 1em .5em .5em;
+  padding: .5em 1em .5em .5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 100%;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+
+.detail-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 8pt;
+  padding: 8pt;
+
+
+}
+
+.d-none{
+  width: 100%;
+}
+
+.show{
+
+}
+.hidden{
+  display: none;
+}
+
+.top-section{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+  }
+
+.top-section p:first-child{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+  .top-section p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+
+  .weather-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+  }
+
+  .weather-container:last-child{
+    margin-top: 5.75em;
+  }
+
+.weather-items{
+  padding-left: 16pt;
+  padding-right: 16pt;
+  max-width: 30em;
+  border-left: 1px solid #eb6e4b;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1em;
+  font-size: .9em;
+  color: #777676;
+}
+.figure-item{
+  display: flex;
+}
+
+.weather-items li{
+  margin-right: 16pt;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+table{
+  text-align: center;
+  
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th{
+  padding: .3em .9em;
+  text-align: left;
+}
+
+table td{
+  color: #777676;
+  font-size: .9em;
+  text-align: left;
+  padding: .2em 1.2em;
+}
+
+.sun-img{
+width: 3.5em;
+margin-right: .8em;
+}
+.icon-wind-direction {
+  height: 1.2em;
+}
+
+.img-link{
+  margin: 0 .5em 0 0;
+  display: inline-block;
+}
+
+.postcard-img{
+  width: 2.25em;
+}
+
+
+.chart{
+  margin:3.75em 0 1.75em 0;
+  width:100%;
+  height:360px;
+}
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1em;
+}
+
+#wind, #temp, #humidity{
+  width: 10em;
+  height: 3em;
+  color: white;
+  background-color: #777676;
+  border-radius: .5em;
+}
+#wind:hover, #temp:hover, #humidity:hover{
+  color: #ff8c00;
+}
+
+div.extra-items{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: .75em;
+}
+
+
+@media (max-width: 964px) {
+  
+  .day-list-container{
+    font-size: .75em;
+  }
+
+  .weather-container{
+    display: block;
+    margin: 2em 0 4em 0;
+  }
+
+  table{
+    margin-top: 3em;
+  }
+
+  th{
+    padding: .2em .7em;
+   
+  }
+ 
+  table td{
+    font-size: .726em;
+    padding: .2em 1em;
+  }
+
+
+  .sun-img{
+    width: 2em;
+    margin-right: .5em;
+    }
+  
+}
+
+.fade-left {
+
+  animation: fadeLeft 2s;
+  animation-direction: alternate;
+  -webkit-animation: fadeLeft 2s;
+  -moz-animation: fadeLeft 2s;
+  -o-animation: fadeLeft 2s;
+  -ms-animation: fadeLeft 2s;
+}
+
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@-moz-keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@-o-keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@-ms-keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
+
+
+
+.row {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+}
+
+.card {
+
+  max-width: 100%;
+  padding: .75rem;
+  margin: 0 .5rem 2rem .5rem;
+  border: 0;
+  flex-basis: 32.333%;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+}
+
+
+.card-margin {
+
+  flex-wrap: wrap;
+  display: flex;
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  border-radius: 10px;
+  background-color: var(--card-background-color);
+}
+
+.card .card-header {
+  background: none;
+  padding: 0 0.9375rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+
+}
+
+
+.card .card-header.no-border {
+  border: 0;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
+
+.widget .widget-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.widget .widget-title-wrapper .widget-date-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget .widget-title-wrapper .widget-date-primary .widget-date-day {
+  color: var(--nav-color);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget .widget-title-wrapper .widget-date-primary .widget-date-month {
+  color: var(--nav-color);
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+
+
+
+.widget .widget-title-wrapper .widget-meeting-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.img-link .widget-img {
+  height: 3em;
+  width: 3em;
+}
+
+
+
+.widget .widget-title-wrapper .widget-meeting-info .widget-meeting-time {
+  color: #4e515f;
+  font-size: .78em;
+  text-transform: uppercase;
+}
+
+.widget .widget-meeting-points {
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: .5rem;
+}
+
+.widget .widget-meeting-points .widget-meeting-item {
+  display: list-item;
+  color: #4e515f;
+}
+
+.widget .widget-meeting-points .widget-meeting-item span {
+  margin-left: .5rem;
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+
+
+  .card {
+
+    max-width: 100%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+    flex-basis: 63.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+
+  .card-margin {
+    margin-bottom: 1.875rem;
+  }
+
+  .card .card-header {
+    background: none;
+    padding: 0 0.9375rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    min-height: 3em;
+  }
+
+
+
+
+
+  .widget .widget-title-wrapper .widget-date-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--card-background-color);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  .widget .widget-title-wrapper .widget-date-primary .widget-date-day {
+    color: var(--nav-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .widget .widget-title-wrapper .widget-date-primary .widget-date-month {
+    color: var(--nav-color);
+    line-height: 1;
+    font-size: .85rem;
+    text-transform: uppercase;
+  }
+
+
+
+
+  .widget .widget-title-wrapper .widget-meeting-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: .5rem;
+  }
+
+
+  .img-link .widget-img {
+    height: 2.2em;
+    width: 2.2em;
+  }
+
+  .widget .widget-title-wrapper .widget-meeting-info .widget-meeting-time {
+    color: #4e515f;
+    font-size: .7em;
+    text-transform: uppercase;
+  }
+
+  .widget .widget-meeting-points {
+    font-weight: 400;
+    font-size: .9em;
+    margin-top: .4rem;
+  }
+
+  .widget .widget-meeting-points .widget-meeting-item span {
+    margin-left: .1rem;
+  }
+
+}
+

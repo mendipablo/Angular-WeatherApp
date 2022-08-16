@@ -1,0 +1,20 @@
+footer {
+  margin-top: 100px;
+  background: #48484a;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Raleway", sans-serif;
+
+}
+
+footer a {
+  color: #a2aaad;
+  transition: 0.3s;
+  
+}
+
+footer a:hover{
+  color: var(--hover-color);
+}

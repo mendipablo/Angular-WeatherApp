@@ -1,0 +1,256 @@
+.pointer-link {
+    cursor: pointer;
+}
+
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+
+#header {
+    height: 4.5em;
+    transition: all 0.5s;
+    z-index: 1001;
+    transition: all 0.5s;
+    background: #48484a;
+}
+
+#header.header-scrolled {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+
+
+
+.navbar-collapse {
+    flex-grow: 0;
+    background: #48484a;
+
+}
+
+.container-fluid.my-container {
+    justify-content: center;
+}
+
+
+#navbarTitle {
+    font-size: 2em;
+    color: var(--nav-color);
+}
+
+
+.navbar {
+    padding: 0;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+}
+
+
+
+.navbar li {
+    position: relative;
+
+}
+
+.bi-bell-fill {
+    color: rgb(209, 77, 16);
+    font-size: 1em;
+
+}
+
+.navbar a,
+.navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 .5em 0 .5em;
+    padding: .6em;
+    font-size: 1.25em;
+    font-family: "Poppins", sans-serif;
+    color: #a2aaad;
+    white-space: nowrap;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+
+.navbar a i,
+.navbar a:focus i {
+
+    line-height: 0;
+    margin-left: .313em;
+}
+
+
+.navbar a:hover,
+.navbar li:hover>a {
+    color: var(--hover-color);
+}
+
+
+
+.navbar .dropdown ul li {
+    min-width: 12.5em;
+}
+
+
+.navbar .dropdown ul a {
+    padding: .625em 1.25em;
+    font-size: .875em;
+    color: #003651;
+}
+
+
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover>a {
+    color: var(--hover-color);
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Search Bar
+--------------------------------------------------------------*/
+
+@media (min-width: 1199.98px) {
+    .search-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-left: 2.5em;
+
+
+    }
+}
+
+
+
+
+.search-block {
+    box-sizing: border-box;
+}
+
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+
+
+}
+
+.search-bar .search-container {
+    position: relative;
+    width: 100%;
+}
+
+
+.search-bar .search-container .search-dropdown-container {
+
+    display: block;
+    position: absolute;
+    top: 1.475em;
+    left: 0;
+    margin: 0;
+    padding: .30em .30em;
+    list-style: none;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid rgba(72, 72, 74, .33);
+    border-top-color: rgba(72, 72, 74, 0.33);
+    border-top-style: solid;
+    border-top-width: .063em;
+    border-top: none;
+    border-bottom-left-radius: .30em;
+    border-bottom-right-radius: .30em;
+    max-height: 31.25em;
+    overflow: auto;
+    z-index: 1001;
+}
+
+.search-bar .search-container .search-dropdown-container li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    padding: .15em .30em;
+    border-radius: .30em;
+    height: 4.68em;
+    overflow: hidden;
+    text-decoration: none;
+    color: #48484a;
+}
+
+
+
+.search-form {
+    width: 100%;
+}
+
+.search-form input {
+    border: 0;
+    font-size: .875em;
+    color: #012970;
+    border: .063em solid rgba(1, 41, 112, 0.2);
+    padding: .438 2.375em .438 .5em;
+    border-radius: .188em;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.search-form input:focus,
+.search-form input:hover {
+    outline: none;
+    box-shadow: 0 0 .625em 0 rgba(1, 41, 112, 0.15);
+    border: .063em solid rgba(1, 41, 112, 0.3);
+}
+
+.search-form button {
+    border: 0;
+    padding: 0;
+    margin-left: -1.875em;
+    background: none;
+}
+
+.search-form button i {
+    color: #012970;
+
+}
+
+
+.flag {
+    height: 1.25em;
+    width: 1.875em;
+
+    margin: 0 1.25em 0 0;
+}
+
+
+
+#coordinates {
+    font-size: .75em;
+    margin-top: .625em;
+}
+
+#countryform {
+    width: 8.75em;
+
+}

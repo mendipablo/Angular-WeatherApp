@@ -1,0 +1,156 @@
+<section>
+  <ng-container *ngIf="thunder.length; then storm ; else nostorm ">
+  </ng-container>
+  <div class="card-body rounded-bottom text-dark" id="card">
+    <div class="row">
+
+
+
+      <!-- ======= Possible Storm Section ======= -->
+
+      <ng-template #storm>
+        <ng-container *ngFor="let item of thunder">
+          <ng-container *ngIf="item[1]['weather']['0']['main'] == 'Thunderstorm' ">
+            <div class="col-6 col-md-4 flex-md-shrink-1 flex-md-grow-1 p-2" id="fade-up">
+              <div class="card-header border-danger bg-danger text-center">
+                <p><b>POSIBLE TORMENTA</b></p>
+              </div>
+              <div class="card text-center" id="cardstorm">
+                <div>
+                  <span class="time">{{item[1].dt_txt |date: 'EEEE '}}, de {{item[1].dt_txt |date: 'd MMMM'}}</span>
+                  <p class="city"><b>{{ item[0]}}</b></p>
+                </div>
+                <div class="card-body pb-0">
+
+                  <img src="./assets/icon/CloudyRain.png" alt="ICONO" id="icono"><span class="pop">{{item[1].pop
+                    * 100 | number}} &#37;
+                  </span>
+
+                  <div>
+                    <p class="description"> {{item[1].weather[0].description}}</p>
+                    <p class="info">Sensación térmica {{item[1].main.feels_like}} &deg;C. </p>
+                  </div>
+
+                </div>
+                <hr>
+                <div id="footer" class="card-body pt-0">
+
+                  <svg class=" icon-wind-direction" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
+                    xml:space="preserve" style="transform:rotate({{item[1].wind.deg}}deg);">
+                    <g fill="#4848a">
+                      <path
+                        d="M510.5,749.6c-14.9-9.9-38.1-9.9-53.1,1.7l-262,207.3c-14.9,11.6-21.6,6.6-14.9-11.6L474,48.1c5-16.6,14.9-18.2,21.6,0l325,898.7c6.6,16.6-1.7,23.2-14.9,11.6L510.5,749.6z">
+                      </path>
+
+                      <path
+                        d="M817.2,990c-8.3,0-16.6-3.3-26.5-9.9L497.2,769.5c-5-3.3-18.2-3.3-23.2,0L210.3,976.7c-19.9,16.6-41.5,14.9-51.4,0c-6.6-9.9-8.3-21.6-3.3-38.1L449.1,39.8C459,13.3,477.3,10,483.9,10c6.6,0,24.9,3.3,34.8,29.8l325,898.7c5,14.9,5,28.2-1.7,38.1C837.1,985,827.2,990,817.2,990z M485.6,716.4c14.9,0,28.2,5,39.8,11.6l255.4,182.4L485.6,92.9l-267,814.2l223.9-177.4C454.1,721.4,469,716.4,485.6,716.4z">
+                      </path>
+                    </g>
+                  </svg>
+                  <span class="footer">
+                    {{item[1].wind.speed}} m/s
+
+                    {{item[1].main.humidity}} &#37;
+                    {{item[1].main.pressure}} hpa&nbsp;&#126;&nbsp;
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+
+      </ng-template>
+    </div>
+  </div>
+
+  <ng-template #nostorm>
+
+    <div class="container bg-secondary mt-3 rounded-3">
+      <div class="row">
+        <h1 id="message">No hay tormentas que se avecinen. </h1>
+      </div>
+    </div>
+  </ng-template>
+
+
+
+
+  <!-- ======= Rain Section ======= -->
+
+  <div class="card-body rounded-bottom text-dark" id="card">
+    <div class="row">
+      <ng-container *ngIf="rain; then showRain">
+      </ng-container>
+
+
+      <ng-template #showRain>
+
+        <ng-container *ngFor="let item of rain">
+
+          <ng-container *ngIf="item[1]['weather']['0']['main'] == 'Rain' && item[1].pop * 100 >= 75 ">
+            <div class="col-6 col-md-4 flex-md-shrink-1 flex-md-grow-1 p-2" id="fade-up">
+
+              <div class="card-header border-info bg-info text-center">
+                <p class="header"><b> POSIBLE PRECIPITACIÓN</b></p>
+              </div>
+              <div class="card text-center border-info" id="cardRain">
+                <div>
+                  <span class="time">{{item[1].dt_txt |date: 'EEEE'}}, de {{item[1].dt_txt |date: 'd MMMM'}}</span>
+                  <p class="city"><b>{{item[0]}}</b></p>
+                </div>
+                <div class="card-body pb-0">
+                  <img src="./assets/icon/CloudyRain.png" alt="ICONO" id="icono"><span class="pop">{{item[1].pop
+                    *
+                    100 | number }} &#37;
+                  </span>
+
+                  <div>
+                    <p class="description"> {{item[1].weather[0].description}}</p>
+                    <span class="info">Sensación térmica {{item[1].main.feels_like}} &deg;C.
+                      Volumen de {{item[1].rain['3h']}} mm en las últimas 3 hs.
+                    </span>
+                  </div>
+
+                </div>
+                <hr>
+                <div id="footer" class="card-body pt-0">
+
+                  <svg class=" icon-wind-direction" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
+                    xml:space="preserve" style="transform:rotate({{item[1].wind.deg}}deg);">
+                    <g fill="#4848a">
+                      <path
+                        d="M510.5,749.6c-14.9-9.9-38.1-9.9-53.1,1.7l-262,207.3c-14.9,11.6-21.6,6.6-14.9-11.6L474,48.1c5-16.6,14.9-18.2,21.6,0l325,898.7c6.6,16.6-1.7,23.2-14.9,11.6L510.5,749.6z">
+                      </path>
+
+                      <path
+                        d="M817.2,990c-8.3,0-16.6-3.3-26.5-9.9L497.2,769.5c-5-3.3-18.2-3.3-23.2,0L210.3,976.7c-19.9,16.6-41.5,14.9-51.4,0c-6.6-9.9-8.3-21.6-3.3-38.1L449.1,39.8C459,13.3,477.3,10,483.9,10c6.6,0,24.9,3.3,34.8,29.8l325,898.7c5,14.9,5,28.2-1.7,38.1C837.1,985,827.2,990,817.2,990z M485.6,716.4c14.9,0,28.2,5,39.8,11.6l255.4,182.4L485.6,92.9l-267,814.2l223.9-177.4C454.1,721.4,469,716.4,485.6,716.4z">
+                      </path>
+                    </g>
+                  </svg>
+                  <span>
+                    {{item[1].wind.speed}} m/s
+
+                    {{item[1].main.humidity}} &#37;
+                    {{item[1].main.pressure}} hpa&nbsp;&#126;&nbsp;
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </ng-container>
+        </ng-container>
+
+      </ng-template>
+
+
+
+    </div>
+  </div>
+
+
+
+</section>
+
+
+
+<app-footer></app-footer>

@@ -1,0 +1,260 @@
+#fade-up {
+  animation: fadeUp 2s;
+  animation-direction: alternate;
+  -webkit-animation: fadeUp 2s;
+  -moz-animation: fadeUp 2s;
+  -o-animation: fadeUp 2s;
+  -ms-animation: fadeUp 2s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.25em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-moz-keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.25em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.25em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-o-keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.25em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-ms-keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.25em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#card {
+  font-family: "Open Sans", sans-serif;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+
+}
+
+#cardRain {
+  background: rgb(194, 242, 250);
+  background: linear-gradient(130deg, rgba(194, 242, 250, 1) 0%, rgba(178, 244, 255, 1) 30%, rgba(178, 244, 255, 1) 70%, rgba(194, 242, 250, 1) 100%);
+
+}
+
+#cardstorm {
+  background: rgb(255, 147, 147);
+  background: linear-gradient(130deg, rgba(255, 147, 147, 1) 0%, rgba(250, 198, 194, 1) 30%, rgba(250, 198, 194, 1) 70%, rgba(255, 147, 147, 1) 100%);
+
+}
+
+
+
+
+@media (min-width: 1200px) {
+  #icono {
+    align-items: center;
+    margin-right: 1.25em;
+    margin-bottom: .6em;
+    width: 8em;
+
+  }
+
+  .card-header {
+    height: 3.75em;
+  }
+
+
+  .header {
+    color: white;
+
+  }
+
+  .icon-wind-direction {
+    height: 1.20em;
+  }
+
+  .city {
+    font-size: 1.875em;
+  }
+
+
+  p {
+    font-size: 1.563em;
+
+  }
+
+  span {
+    font-size: .938em;
+
+  }
+
+  .time {
+    font-size: .938em;
+    color: #eb714f;
+    text-transform: uppercase;
+  }
+
+  .description {
+    color: #eb714f;
+    font-size: 1.75em;
+  }
+
+  .info {
+    font-size: 1.375em;
+  }
+
+
+
+  .description::first-letter {
+    text-transform: uppercase;
+
+  }
+
+  .pop {
+    font-size: 1.563em;
+    font-style: bold;
+  }
+
+
+
+  .footer {
+    font-size: 1.125em;
+
+  }
+
+  #message {
+    font-size: 2.125em;
+    text-align: center;
+    color: white;
+  }
+}
+
+
+
+
+@media (max-width: 1199.98px) {
+  #icono {
+    align-items: center;
+    margin: 0;
+    width: 3.5em;
+
+  }
+
+  .card-header {
+    height: 2em;
+  }
+
+  .header {
+    color: white;
+
+  }
+
+  .header p {
+    font-size: .5em;
+  }
+
+  .icon-wind-direction {
+    height: .70em;
+  }
+
+  .city {
+    font-size: 1em;
+    margin: 0;
+  }
+
+
+  p {
+    font-size: .75em;
+
+  }
+
+  span {
+    font-size: .438em;
+
+  }
+
+  .time {
+    font-size: .688em;
+    color: #eb714f;
+    text-transform: uppercase;
+  }
+
+
+  .description {
+    color: #eb714f;
+    font-size: .85em;
+    margin: 0;
+  }
+
+  .info {
+    font-size: .70em;
+
+  }
+
+  .description b {
+
+    color: white;
+  }
+
+  .description::first-letter {
+    text-transform: uppercase;
+
+  }
+
+  .pop {
+    font-size: 1.125em;
+    font-style: bold;
+  }
+
+  #footer {
+    line-height: .1em;
+  }
+
+  #footer span {
+    font-size: .625em;
+  }
+
+  #message {
+    font-size: 1.125em;
+    text-align: center;
+    color: white;
+  }
+}
