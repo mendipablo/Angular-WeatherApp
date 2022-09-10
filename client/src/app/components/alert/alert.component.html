@@ -1,10 +1,10 @@
 <section>
-  <ng-container *ngIf="thunder.length; then storm ; else nostorm ">
-  </ng-container>
-  <div class="card-body rounded-bottom text-dark" id="card">
+  
+  <div class="card-body rounded-bottom text-dark" >
     <div class="row">
 
-
+      <ng-container *ngIf="thunder.length; then storm ; else nostorm ">
+      </ng-container>
 
       <!-- ======= Possible Storm Section ======= -->
 
@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body pb-0">
 
-                  <img src="./assets/icon/CloudyRain.png" alt="ICONO" id="icono"><span class="pop">{{item[1].pop
+                  <img src="./assets/icon/CloudyStorm.png" alt="ICONO" id="icono"><span class="pop">{{item[1].pop
                     * 100 | number}} &#37;
                   </span>
 
@@ -33,8 +33,8 @@
 
                 </div>
                 <hr>
-                <div id="footer" class="card-body pt-0">
-
+                <div class="card-body pt-0">
+                  <div class="footer">
                   <svg class=" icon-wind-direction" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
                     xml:space="preserve" style="transform:rotate({{item[1].wind.deg}}deg);">
                     <g fill="#4848a">
@@ -47,12 +47,13 @@
                       </path>
                     </g>
                   </svg>
-                  <span class="footer">
-                    {{item[1].wind.speed}} m/s
+                  
+                  <span>{{item[1].wind.speed *3.6 | number: '1.2-2':'en'}} Km/h</span>
+                  <span>{{item[1].main.humidity}} &#37;</span>
+                  <span>{{item[1].main.pressure}} hpa&nbsp;&#126;&nbsp;</span>
+        
 
-                    {{item[1].main.humidity}} &#37;
-                    {{item[1].main.pressure}} hpa&nbsp;&#126;&nbsp;
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -77,9 +78,9 @@
 
   <!-- ======= Rain Section ======= -->
 
-  <div class="card-body rounded-bottom text-dark" id="card">
+  <div class="card-body rounded-bottom text-dark" >
     <div class="row">
-      <ng-container *ngIf="rain; then showRain">
+      <ng-container *ngIf="rain.length; then showRain; else norain">
       </ng-container>
 
 
@@ -113,8 +114,8 @@
 
                 </div>
                 <hr>
-                <div id="footer" class="card-body pt-0">
-
+                <div class="card-body pt-0">
+                  <div class="footer">
                   <svg class=" icon-wind-direction" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
                     xml:space="preserve" style="transform:rotate({{item[1].wind.deg}}deg);">
                     <g fill="#4848a">
@@ -127,12 +128,17 @@
                       </path>
                     </g>
                   </svg>
-                  <span>
-                    {{item[1].wind.speed}} m/s
-
-                    {{item[1].main.humidity}} &#37;
-                    {{item[1].main.pressure}} hpa&nbsp;&#126;&nbsp;
-                  </span>
+                  
+                    <span> {{item[1].wind.speed *3.6 | number: '1.0-0':'en'}} Km/h</span>
+                    <span>{{item[1].main.humidity}}&#37;</span>
+                    <span>{{item[1].main.pressure}} hpa&nbsp;&#126;&nbsp;</span>
+                   
+                    
+                    
+                  
+                  </div>
+                    
+                  
                 </div>
               </div>
 
@@ -142,6 +148,12 @@
 
       </ng-template>
 
+      <ng-template #norain>
+
+        <div class="container bg-secondary mt-3 rounded-3">
+        
+        </div>
+      </ng-template>
 
 
     </div>

@@ -1,8 +1,20 @@
-#main {
 
-  margin-top: 40px;
+
+/*--------------------------------------------------------------
+# Search
+--------------------------------------------------------------*/
+
+.search-form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+  border-radius: .30em;
 
 }
+
+
 
 .wrap{
   width: 90%;
@@ -46,22 +58,35 @@ background-color: var(--card-background-color);
   display: none;
 }
 
-.top-section{
+header{
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: .5em;
   justify-content: center;
+  
+  
   }
 
-.top-section p:first-child{
-  text-transform: uppercase;
-  font-weight: 700;
-}
+  header h1{
+    font-size: 2.25em;
+    color: white;
+  }
+  h2{
+    text-align: center;
+  }
+
+  .top-section {
+    display: flex;
+    justify-content: center;
+  }
 
   .top-section p{
+    text-transform: uppercase;
+    font-weight: 700;
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 15px;
+    
   }
 
   .weather-container{
@@ -329,6 +354,13 @@ div.extra-items{
 .card-title {
   text-transform: capitalize;
 }
+.active-class h5{
+  visibility: hidden;
+}
+.active-class h5::before{
+  visibility: visible;
+ content: 'Hoy';
+}
 
 .widget .widget-title-wrapper {
   display: flex;
@@ -402,6 +434,13 @@ div.extra-items{
 @media screen and (max-width: 768px) {
 
 
+
+header h1{
+  font-size: 1.55em;
+}
+h2 {
+  font-size: 1.4em;
+}
 
   .card {
 

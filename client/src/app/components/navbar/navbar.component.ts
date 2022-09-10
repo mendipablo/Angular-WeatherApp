@@ -108,9 +108,7 @@ export class NavbarComponent implements OnInit {
 
 
 
-  //toma la lista de todas las ciudades
-  //barre cada ciudad a 5 dias
-  //y comprueba en cual existe posibilidad de tormenta
+  
 
   /**
    * 
@@ -195,7 +193,7 @@ export class NavbarComponent implements OnInit {
           //this.weather = []
           this.weather = res
           this.showWeatherDaily(this.weather['name'])
-          //this.showWeatherExtend(this.weather['name'])
+    
 
 
 
@@ -208,8 +206,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  //busca el nombre de la ciudad, toma sus coordenas
-  // y devuelve el clima a 8 dias
+
   /**
    * 
    * @param cityName 
@@ -230,7 +227,7 @@ export class NavbarComponent implements OnInit {
 
           let coord = res['coord']
 
-          console.log(this.weather, 'Array clima de la ciudad')
+          //console.log(this.weather, 'Array clima de la ciudad')
           this.weatherService.getOneCall(coord['lat'], coord['lon'])
             .subscribe(
               res2 => {
@@ -245,7 +242,7 @@ export class NavbarComponent implements OnInit {
 
                 }
 
-                console.log(res2['daily'][0], '8 dias')
+               
                 this.passLocation()
                 this.passExtend()
               }
@@ -264,16 +261,6 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  /**
-    getWeatherData(data: any) {
-      this.weatherData = [];
-      for (let i = 0; i < data.length; i = i + 8) {
-        this.weatherData.push(data[i]);
-      }
-      console.log(this.weatherData, 'get weather data 2')
-    }
-
-   */
 
   
 
@@ -434,19 +421,20 @@ export class NavbarComponent implements OnInit {
         (word['weather']['0']['id'] == 502)) {
 
         var rainDay = 'Se pronostican lluvias de variada intensidad. <br />' +
-          'La temperatura máxima para el día de hoy será de unos ' + Math.round(word['temp']['max']) +
-          ' °C y con una mínima de ' + Math.round(word['temp']['min']) + ' °C. <br />' +
+          'Se espera que la temperatura máxima para el día de hoy alcance los ' + Math.round(word['temp']['max']) +
+          ' °C y una mínima de ' + Math.round(word['temp']['min']) + ' °C. <br />' +
           'En la última hora se registró un volumen de precipitación de ' + Math.round(word['rain']) + ' mm.  <br />' +
           'Ráfagas de ' + Math.round(word['wind_gust'] * 3.6) + ' Km/h provenientes del ' +
           this.convertDegreeToCardinalPoint(word['wind_deg']) + '.';
-      } else {
 
-
-        var rainDay = 'Ufffff';
-
-      }
-
-
+        } else {
+          var rainDay = 'Posibilidad de lloviznas dispersas en el transcurso del día <br />'+
+          'Se espera que la temperatura máxima alcance los ' + Math.round(word['temp']['max']) +
+          ' °C y una mínima de ' + Math.round(word['temp']['min']) + ' °C. <br />' +
+          'En la última hora se registró un volumen de precipitación de ' + Math.round(word['rain']) + ' mm.  <br />' +
+          'Ráfagas de ' + Math.round(word['wind_gust'] * 3.6) + ' Km/h provenientes del ' +
+          this.convertDegreeToCardinalPoint(word['wind_deg']) + '.';
+        }
 
       texts.push(rainDay);
 
@@ -454,7 +442,12 @@ export class NavbarComponent implements OnInit {
 
     if (word['weather']['0']['main'] == 'Thunderstorm') {
 
-      const stormDay = 'Refusila';
+      const stormDay = 'Se pronostican lluvias de variada intesidad con actividad eléctrica <br />'+
+      'Con una temperatura máxima de ' + Math.round(word['temp']['max']) +
+      ' °C y con una mínima de ' + Math.round(word['temp']['min']) + ' °C. <br />' +
+      'En la última hora se registró un volumen de precipitación de ' + Math.round(word['rain']) + ' mm.  <br />' +
+      'Ráfagas de ' + Math.round(word['wind_gust'] * 3.6) + ' Km/h provenientes del ' +
+      this.convertDegreeToCardinalPoint(word['wind_deg']) + '.';
 
       texts.push(stormDay);
 

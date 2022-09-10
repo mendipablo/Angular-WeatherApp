@@ -67,11 +67,6 @@
   }
 }
 
-#card {
-  font-family: "Open Sans", sans-serif;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-
-}
 
 #cardRain {
   background: rgb(194, 242, 250);
@@ -157,8 +152,14 @@
 
   .footer {
     font-size: 1.125em;
-
   }
+
+  .footer span{
+      display: inline-block;
+      margin-left: .5em;
+  }
+  
+ 
 
   #message {
     font-size: 2.125em;
@@ -244,11 +245,15 @@
     font-style: bold;
   }
 
-  #footer {
+  .footer {
     line-height: .1em;
   }
+  .footer span{
+    display: inline-block;
+    margin-left: .5em;
+}
 
-  #footer span {
+  .footer span {
     font-size: .625em;
   }
 

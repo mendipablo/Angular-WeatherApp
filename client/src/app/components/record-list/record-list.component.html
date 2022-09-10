@@ -1,10 +1,18 @@
-<section class="fade-left" id="main">
-
+<section class="fade-left">
 
   <ng-container *ngIf="modelCity.length else error">
-    <h2 class="top-section"> {{modelCity[0].city}}</h2>
-   
-    <div *ngFor='let city of modelCity | paginate : {itemsPerPage: 5, currentPage:page}; let i = index' class="d-flex justify-content-center" >  
+    
+        <header class="container bg-secondary mt-3 rounded-3">
+          <h1 >Reportes - Historial - Próximos días </h1>
+        </header>
+        <h2> {{modelCity[0].city}}</h2>
+  
+        <form class="search-form " >
+         
+          <input size="30" type="text" placeholder="Buscar por fecha o descripción" name="filterShow" [(ngModel)]="filterShow" >
+         
+          </form>
+    <div *ngFor='let city of modelCity | filter:filterShow| paginate : {itemsPerPage: 5, currentPage:page} ; let i = index' class="d-flex justify-content-center" >  
       <div class="wrap"  >
     
           <div type="button" (click)="toggle(ver,i)" class="card-header" >
@@ -67,9 +75,6 @@
         <div class="d-none" #ver >
         <div class="detail-container" >
         
-       
-         
-
             <div class="top-section">
               <div >
                 <p>{{city.weather[0].weather[0].description}}</p>
@@ -124,7 +129,7 @@
         <div class="weather-container">
             <div class="figure-item">
             <figure>
-              <img  src="./assets/icon/Sunn/y.png" alt="ICONO"
+              <img  src="./assets/icon/Sunny.png" alt="ICONO"
                   class="sun-img">
             </figure>
               <ul class="weather-items">
@@ -186,7 +191,8 @@ nextLabel="Siguiente" (pageChange)='page = $event'> </pagination-controls>
 
         <div class="container">
           <div class="row">
-            <div class="card" *ngFor="let day of timeline">
+            <div class="card" *ngFor="let day of timeline; let first = first"
+            [ngClass]="{'active-class': first}">
   
               <div class="card card-margin">
                 <div class="card-header no-border">

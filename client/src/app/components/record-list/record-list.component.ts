@@ -24,6 +24,7 @@ export class RecordListComponent implements OnInit {
     windpoints: any[] =  []
     humiditypoints: any[] =  []
     chartOptions: any;
+    filterShow = '';
 
   ngOnInit() {
 
@@ -60,8 +61,8 @@ export class RecordListComponent implements OnInit {
       };
   
 
-  //busca el nombre de la ciudad, toma sus coordenas
-  // y devuelve el clima a 8 dias
+ 
+      
   showWeatherDaily(cityName: string) {
     let card = 0;
     let call = []
@@ -117,148 +118,151 @@ export class RecordListComponent implements OnInit {
 
   }
 
-temperatureChart(index:number){
 
-  this.datapoints.length = 0;
-  
-  for(let hour of this.modelCity[index]['weather'][1]){
-    this.datapoints.push({x: new Date(hour['dt'] *1000), y: hour['temp']})
-   
+ 
+
+  temperatureChart(index:number){
+
+    this.datapoints.length = 0;
+    
+    for(let hour of this.modelCity[index]['weather'][1]){
+      this.datapoints.push({x: new Date(hour['dt'] *1000), y: hour['temp']})
+    
+    }
+
+    console.log(this.datepipe.transform(this.datapoints[index]['x'], 'yyyy-MM-dd'));
+    this.chartOptions = new CanvasJS.Chart("chartContainer"+index, {
+    
+      exportFileName: 'gráfico '+this.datepipe.transform(this.datapoints[index]['x'], 'yyyy-MM-dd'),
+      exportEnabled: true,
+      title: {
+        text: "Estadísticas por hora",
+        fontFamily: 'Roboto'
+      },
+      toolTip:{
+        content:"{y}°C",
+      },
+      animationEnabled: true,
+      axisY: [
+      {
+        title: "Temperatura",
+        interval:1,
+        labelFontSize: 12,
+      },
+    ],
+      axisX:{
+        title: "Hora",
+        interval: 2,
+        intervalType: "hour",
+        labelFontSize: 12, 
+      },
+      data: [{
+        color:'#ff8c00',
+      type: "area", //change type to bar, line, area, pie, etc
+      //indexLabel: "{y}°C", //Shows y value on all Data Points
+      axisXIndex: 0,
+      dataPoints: this.datapoints
+      }]
+    } 
+    ); 
+    this.chartOptions.render();    
   }
 
-  console.log(this.datepipe.transform(this.datapoints[index]['x'], 'yyyy-MM-dd'));
-  this.chartOptions = new CanvasJS.Chart("chartContainer"+index, {
-   
-    exportFileName: 'gráfico '+this.datepipe.transform(this.datapoints[index]['x'], 'yyyy-MM-dd'),
-    exportEnabled: true,
-    title: {
-      text: "Estadísticas por hora",
-      fontFamily: 'Roboto'
-    },
-    toolTip:{
-      content:"{y}°C",
-    },
-    animationEnabled: true,
-    axisY: [
-    {
-      title: "Temperatura",
-      interval:1,
-      labelFontSize: 12,
-    },
-  ],
-    axisX:{
-      title: "Hora",
-      interval: 2,
-      intervalType: "hour",
-      labelFontSize: 12, 
-    },
-    data: [{
-      color:'#ff8c00',
-    type: "area", //change type to bar, line, area, pie, etc
-    //indexLabel: "{y}°C", //Shows y value on all Data Points
-    axisXIndex: 0,
-    dataPoints: this.datapoints
-    }]
-  } 
-  ); 
-  this.chartOptions.render();    
-}
 
+  windChart(index:number){
 
-windChart(index:number){
+    this.windpoints.length = 0;
+    
+    for(let hour of this.modelCity[index]['weather'][1]){
 
-  this.windpoints.length = 0;
-  
-  for(let hour of this.modelCity[index]['weather'][1]){
+      this.windpoints.push({x: new Date(hour['dt'] *1000), y: hour['wind_speed'] *3.6})
+    }
 
-    this.windpoints.push({x: new Date(hour['dt'] *1000), y: hour['wind_speed'] *3.6})
+    console.log(this.datepipe.transform(this.windpoints[index]['x'], 'yyyy-MM-dd'));
+    this.chartOptions = new CanvasJS.Chart("chartContainer"+index, {
+    
+      exportFileName: 'gráfico '+this.datepipe.transform(this.windpoints[index]['x'], 'yyyy-MM-dd'),
+      exportEnabled: true,
+      title: {
+        text: "Estadísticas por hora",
+        fontFamily: 'Roboto'
+      },
+      toolTip:{
+        content:"{y}Km/H",
+      },
+      animationEnabled: true,
+      axisY: [
+      {
+        title: "Velocidad",
+        interval:1,
+        labelFontSize: 12,
+      },
+    ],
+      axisX:{
+        title: "Hora",
+        interval: 2,
+        intervalType: "hour",
+        labelFontSize: 12, 
+      },
+      data: [{
+        color:'#415eff',
+      type: "area", //change type to bar, line, area, pie, etc
+      //indexLabel: "{y}°C", //Shows y value on all Data Points
+      axisXIndex: 0,
+      dataPoints: this.windpoints
+      }]
+    } 
+    ); 
+    this.chartOptions.render();    
   }
 
-  console.log(this.datepipe.transform(this.windpoints[index]['x'], 'yyyy-MM-dd'));
-  this.chartOptions = new CanvasJS.Chart("chartContainer"+index, {
-   
-    exportFileName: 'gráfico '+this.datepipe.transform(this.windpoints[index]['x'], 'yyyy-MM-dd'),
-    exportEnabled: true,
-    title: {
-      text: "Estadísticas por hora",
-      fontFamily: 'Roboto'
-    },
-    toolTip:{
-      content:"{y}Km/H",
-    },
-    animationEnabled: true,
-    axisY: [
-    {
-      title: "Velocidad",
-      interval:1,
-      labelFontSize: 12,
-    },
-  ],
-    axisX:{
-      title: "Hora",
-      interval: 2,
-      intervalType: "hour",
-      labelFontSize: 12, 
-    },
-    data: [{
-      color:'#415eff',
-    type: "area", //change type to bar, line, area, pie, etc
-    //indexLabel: "{y}°C", //Shows y value on all Data Points
-    axisXIndex: 0,
-    dataPoints: this.windpoints
-    }]
-  } 
-  ); 
-  this.chartOptions.render();    
-}
 
+  humidityChart(index:number){
 
-humidityChart(index:number){
+    this.humiditypoints.length = 0;
+    
+    for(let hour of this.modelCity[index]['weather'][1]){
 
-  this.humiditypoints.length = 0;
-  
-  for(let hour of this.modelCity[index]['weather'][1]){
+      this.humiditypoints.push({x: new Date(hour['dt'] *1000), y: hour['humidity'] })
+    }
 
-    this.humiditypoints.push({x: new Date(hour['dt'] *1000), y: hour['humidity'] })
+    console.log(this.datepipe.transform(this.humiditypoints[index]['x'], 'yyyy-MM-dd'));
+    this.chartOptions = new CanvasJS.Chart("chartContainer"+index, {
+    
+      exportFileName: 'gráfico '+this.datepipe.transform(this.humiditypoints[index]['x'], 'yyyy-MM-dd'),
+      exportEnabled: true,
+      title: {
+        text: "Estadísticas por hora",
+        fontFamily: 'Roboto'
+      },
+      toolTip:{
+        content:"{y}%",
+      },
+      animationEnabled: true,
+      axisY: [
+      {
+        title: "Humedad",
+        interval:1,
+        labelFontSize: 12,
+      },
+    ],
+      axisX:{
+        title: "Hora",
+        interval: 2,
+        intervalType: "hour",
+        labelFontSize: 12, 
+      },
+      data: [{
+        color:'#4caf50',
+      type: "area", //change type to bar, line, area, pie, etc
+      //indexLabel: "{y}°C", //Shows y value on all Data Points
+      axisXIndex: 0,
+      dataPoints: this.humiditypoints
+      }]
+    } 
+    ); 
+    this.chartOptions.render();    
   }
-
-  console.log(this.datepipe.transform(this.humiditypoints[index]['x'], 'yyyy-MM-dd'));
-  this.chartOptions = new CanvasJS.Chart("chartContainer"+index, {
-   
-    exportFileName: 'gráfico '+this.datepipe.transform(this.humiditypoints[index]['x'], 'yyyy-MM-dd'),
-    exportEnabled: true,
-    title: {
-      text: "Estadísticas por hora",
-      fontFamily: 'Roboto'
-    },
-    toolTip:{
-      content:"{y}%",
-    },
-    animationEnabled: true,
-    axisY: [
-    {
-      title: "Humedad",
-      interval:1,
-      labelFontSize: 12,
-    },
-  ],
-    axisX:{
-      title: "Hora",
-      interval: 2,
-      intervalType: "hour",
-      labelFontSize: 12, 
-    },
-    data: [{
-      color:'#4caf50',
-    type: "area", //change type to bar, line, area, pie, etc
-    //indexLabel: "{y}°C", //Shows y value on all Data Points
-    axisXIndex: 0,
-    dataPoints: this.humiditypoints
-    }]
-  } 
-  ); 
-  this.chartOptions.render();    
-}
 
  
   public toggle(element: HTMLElement ,index: number) {

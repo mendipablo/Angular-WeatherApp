@@ -16,7 +16,6 @@ import {Http404Component} from './components/http404/http404.component';
 import {MapComponent} from './components/map/map.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {RecordListComponent} from './components/record-list/record-list.component';
-import {ReportsComponent} from './components/reports/reports.component';
 import {SearchComponent} from './components/search/search.component';
 //services
 
@@ -28,6 +27,7 @@ import {HelperService} from './services/helper.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import * as CanvasJSAngularChart from '../assets/canvas/canvasjs.angular.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './pipes/filter.pipe';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
  
 
@@ -40,11 +40,11 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     Http404Component,
     RecordListComponent,
     MapComponent,
-    ReportsComponent,
     AlertComponent,
     FooterComponent,
     SearchComponent,
-    CanvasJSChart
+    CanvasJSChart,
+    FilterPipe
 
 
   ],

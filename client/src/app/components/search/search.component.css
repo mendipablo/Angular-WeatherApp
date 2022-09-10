@@ -253,6 +253,15 @@
   text-transform: capitalize;
 }
 
+.active-class h5{
+  visibility: hidden;
+}
+.active-class h5::before{
+  visibility: visible;
+ content: 'Hoy';
+}
+
+
 .widget .widget-title-wrapper {
   display: flex;
   align-items: center;
